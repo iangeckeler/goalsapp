@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
-const sendDate = require('../controllers/sendData')
+const sendData = require('../controllers/sendData')
 
 router.get('/',(req,res)=>{
     res.render('index')

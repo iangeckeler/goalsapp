@@ -1,9 +1,11 @@
 const http = require('http');
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.options('*', cors()) // include before other routes
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -12,21 +14,13 @@ app.use(function(req, res, next) {
 });
 
 
-//how to send a message
-// client.messages
-//   .create({
-//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-//      from: twilioPhone,
-//      to: myPhone
-//    })
-//   .then(message => console.log(message.sid))
-//   .done();
-
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'))
 
+//servio
+//ssh -R 80:localhost:3000 serveo.net
 
 //routes
 const twilioRoutes = require('./routes/twilioroutes');
