@@ -33,6 +33,14 @@ class App extends React.Component {
         event.preventDefault();
         console.log(this.state.items)
         console.log(this.state.title)
+        const payload = {
+        title: this.state.title,
+        body: this.state.items,
+        };
+
+        const url = 'https://questio.serveo.net/sendData';
+        axios({url:url,method:'post',data:payload});
+        console.log('made the post')
     }
 
     render() {

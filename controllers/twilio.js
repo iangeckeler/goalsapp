@@ -9,6 +9,8 @@ const myPhone = '+17604207520'
 
 const twilio = (req, res) => {
     const twiml = new MessagingResponse();
+    console.log(req.body.Body)
+    console.log(req.body.From)
   
     twiml.message('The Robots are coming! Head for the hills!');
   
