@@ -3,10 +3,11 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 // Your Account Sid and Auth Token from twilio.com/console
 const findGoal = require('../scripts/findgoal');
 const DayGoal = require('../models/daygoals');
+const taskUpdate = require('./taskupdate')
 
 
 const twilio = (req, res) => {
-    const twiml = new MessagingResponse();
+    // const twiml = new MessagingResponse();
 
     // parse request
     let s = req.body.Body;
@@ -45,11 +46,10 @@ const twilio = (req, res) => {
             console.log(err)
         })
     
-        twiml.message(`${newStatus}`);
-    
-        res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.end(twiml.toString());
-
+        // twiml.message(`${newStatus}`);
+        // res.writeHead(200, {'Content-Type': 'text/xml'});
+        // res.end(twiml.toString());
+        taskUpdate()
     
     }).catch(err=>{
         console.log(err)

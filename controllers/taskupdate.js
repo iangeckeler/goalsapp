@@ -2,7 +2,7 @@ const sendTwilio = require('../scripts/sendtwilio').sendTwilio;
 const twilioPhone = require('../scripts/sendtwilio').twilioPhone;
 const myPhone = require('../scripts/sendtwilio').myPhone;
 const updateMsg = require('../scripts/updatemessage')
-const findGoal - require('../scripts/findgoal')
+const findGoal = require('../scripts/findgoal')
 //set up the timeline (done in heroku) eventually switch to node-cron
 
 
