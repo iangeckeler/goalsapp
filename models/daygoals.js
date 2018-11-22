@@ -10,7 +10,7 @@ class DayGoal {
         this.status = status;
     }
 
-    updateStatus() {
+    updateStatus() {         
         //update new status
         let myquery = {"date": {"$gte": new Date(moment().startOf('day'))}};
         var newvalues = { $set: {status: this.status} };

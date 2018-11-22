@@ -3,7 +3,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 // Your Account Sid and Auth Token from twilio.com/console
 const findGoal = require('../scripts/findgoal');
 const DayGoal = require('../models/daygoals');
-const taskUpdate = require('./taskupdate')
+const taskUpdate = require('./twiliotasks/taskupdate')
 
 
 const twilio = (req, res) => {
