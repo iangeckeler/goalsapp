@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'))
 
 //servio
-//ssh -R 80:localhost:3000 serveo.net
+//ssh -o ServerAliveInterval=60 -R 80:localhost:8888 serveo.net
 
 //routes
 const twilioRoutes = require('./routes/twilioroutes');
