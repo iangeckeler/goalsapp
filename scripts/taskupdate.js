@@ -5,6 +5,7 @@ const twilioPhone = require('./sendtwilio').twilioPhone;
 const myPhone = require('./sendtwilio').myPhone;
 const connectDb = require('../database').db;
 const  dbName = require('../database').dbName
+const updateMsg = require('./updatemessage')
 //set up the timeline (done in heroku) eventually switch to node-cron
 
 //query the database
@@ -28,11 +29,9 @@ const findGoal = ()=>{
 //construct task message
 
 findGoal().then(arr=>{
-    let message = "Today's priorities: \n";
     let tasks = arr[0].tasks;
-    for (let i=0;i<tasks.length;i++) {
-        message += `\n${i+1}. ${tasks[i]}`
-    }
+    let status = arr[0].status;
+    message = updateMsg(tasks,status)
     //send the task list
     sendTwilio(twilioPhone,myPhone,message)
 }).catch(err=>{
