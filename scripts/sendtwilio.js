@@ -1,4 +1,3 @@
-
 const accountSid = 'ACd3153105e04575233d9ed18e4899323a';
 const authToken = 'ee64bf998e59b27fc07e9a7c1c4d4544';
 const client = require('twilio')(accountSid, authToken);
@@ -19,7 +18,9 @@ const sendTwilio= (from,to,body) => {
 
 
 module.exports = {
-    sendTwilio: sendTwilio
+    sendTwilio: sendTwilio,
+    twilioPhone:twilioPhone,
+    myPhone: myPhone
 }
 
   

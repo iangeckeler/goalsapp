@@ -38,7 +38,7 @@ class App extends React.Component {
         body: this.state.items,
         };
 
-        const url = 'https://questio.serveo.net/sendData';
+        const url = 'https://dicto.serveo.net/sendData';
         axios({
             url:url,
             method:'post',
