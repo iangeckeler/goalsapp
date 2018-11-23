@@ -1,5 +1,5 @@
 const getData = (req,res) => {
-    console.log(req)
+    //console.log(req)
     res.send('success')
 }
 

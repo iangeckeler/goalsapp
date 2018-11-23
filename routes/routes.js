@@ -4,9 +4,10 @@ const router = express.Router();
 
 const sendData = require('../controllers/sendData')
 const getData = require('../controllers/getData');
+const isAuthenticated = require('../controllers/isauthenticated')
 
-router.get('/',(req,res)=>{
-    res.render('../dist/index')
+router.get('/',isAuthenticated,(req,res)=>{
+    res.render('index')
 })
 
 router.get('/getData',getData)

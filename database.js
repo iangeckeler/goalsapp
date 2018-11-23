@@ -2,19 +2,19 @@
 const mongodb = require('mongodb')
 const MongoClient =mongodb.MongoClient;
 
-const user = 'geckeler'
-const pass = 'eHwR44nP7XzUU9u';
 //moody
 const dbName = 'goalsapp'
-
+const user = 'geckeler'
+const pass = 'yyhkrspRNaEW7rx';
 // for mlab
-// const mongoUrl = 'mongodb://'+user+':'+pass+'@ds151068.mlab.com:51068/moody';
-// const user = 'geckeler'
-// const pass = 'eHwR44nP7XzUU9u';
+const mongoUrl = 'mongodb://'+user+':'+pass+'@ds115154.mlab.com:15154/goalsapp';
+//local doesn't work with sessions?
 const localMongoUrl = 'mongodb://localhost:27017';
+//which database are you using?
+let url = mongoUrl;
 
 const db = function (callback) {
-    MongoClient.connect(localMongoUrl).then(res=>{
+    MongoClient.connect(url).then(res=>{
         callback(res)
     }).catch(err=> {
         return err
@@ -23,5 +23,6 @@ const db = function (callback) {
 
 module.exports = {
     db:db,
-    dbName:dbName
+    dbName:dbName,
+    dbUrl: url
 }

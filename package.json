@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-mongodb-session": "^2.0.5",
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "moment": "^2.22.2",
     "mongodb": "^3.1.10",
     "node-cron": "^2.0.3",
