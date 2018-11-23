@@ -1,13 +1,12 @@
 const e = React.createElement
+const List = require('./components/list')
+const serveoHost = 'https://vilicus.serveo.net/' 
+const localHost = '/'
+const host = localHost;
 
-//creat the list item component
-const List = props => {
-    return e('ul',null,[
-        props.items.map((item,index)=>{
-            return e('li',{key:index},item);
-        })])
-}
-
+axios.get(host+'getData').then(res=>{
+    console.log(res)
+})
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +37,7 @@ class App extends React.Component {
         body: this.state.items,
         };
 
-        const url = 'https://dicto.serveo.net/sendData';
+        let url = host+'sendData';
         axios({
             url:url,
             method:'post',
@@ -47,7 +46,6 @@ class App extends React.Component {
                 'Content-Type':'application/json'
             }
         }).then(res=>{
-            window.location.replace('/')
         });
     }
 

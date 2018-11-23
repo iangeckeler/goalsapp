@@ -14,13 +14,13 @@ app.use(function(req, res, next) {
 });
 
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/dist');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/views'))
+app.use(express.static(__dirname + '/dist'))
 
-//servio
-//ssh -o ServerAliveInterval=60 -R 80:localhost:8888 serveo.net
+//servio NOTE change to 3000 for non ui changes
+//ssh -R 80:localhost:8080 serveo.net
 
 //routes
 const twilioRoutes = require('./routes/twilioroutes');
