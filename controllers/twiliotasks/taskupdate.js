@@ -7,15 +7,17 @@ const findGoal = require('../../scripts/findgoal')
 
 
 
-const taskUpdate = ()=>{
+const taskUpdate = (from)=>{
     //construct task message
 
-    findGoal().then(arr=>{
+    findGoal(from).then(arr=>{
         let tasks = arr[0].tasks;
         let status = arr[0].status;
         message = updateMsg(tasks,status)
         //send the task list
-        sendTwilio(twilioPhone,myPhone,message)
+        number = '+1'+from
+        console.log(number)
+        sendTwilio(twilioPhone,number,message)
     }).catch(err=>{
         console.log(err)
     })

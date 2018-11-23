@@ -14,7 +14,7 @@ router.get('/',(req,res)=>{
 
 //login
 router.post('/',(req,res)=>{
-    let user = new User(req.body.email,req.body.password);
+    let user = new User(req.body.phone,req.body.password);
     //check if user exists
     user.exists().then(exists=>{
         if (!exists){
@@ -23,7 +23,7 @@ router.post('/',(req,res)=>{
             user.validate().then(validated=>{
                 if (validated) {
                     req.session.loggedIn = true;
-                    req.session.user = user.email;
+                    req.session.user = user.phone;
                     res.redirect('/')
                 } else {
                     res.render('login.ejs',{message:"Oops, incorrect password"})
@@ -43,7 +43,7 @@ router.get('/signup',(req,res)=>{
 });
 
 router.post('/signup',(req,res)=>{
-    let user = new User(req.body.email,req.body.password1);
+    let user = new User(req.body.phone,req.body.password1);
     //check if user exists
     user.exists().then(exists=>{
         if (exists){

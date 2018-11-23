@@ -4,12 +4,14 @@ const moment = require('moment');
 
 
 //get updated task list based on today's date
-const findGoal = ()=>{
+const findGoal = (from)=>{
+    console.log(from)
+    console.log(typeof from)
     return new Promise((resolve,reject)=> {
         connectDb((client)=>{
             let db = client.db(dbName);
             let collection = db.collection('daygoals');
-            collection.find({"date": {"$gte": new Date(moment().startOf('day'))}}).toArray().then(arr => {
+            collection.find({"date": {"$gte": new Date(moment().startOf('day'))}, "user":from}).toArray().then(arr => {
                 resolve(arr)
         }).catch(err=>{
             reject(err)

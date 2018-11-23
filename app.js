@@ -33,10 +33,11 @@ app.use(
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-//app.use(express.static(__dirname + '/views'))
+//Was giving problems before with the login
+app.use(express.static(__dirname + '/views'))
 
 //servio NOTE change to 3000 for non ui changes
-//ssh -R 80:localhost:8080 serveo.net
+//ssh -R 80:localhost:3000 serveo.net
 const authRoutes = require('./routes/authroutes')
 app.use('/login', authRoutes);
 

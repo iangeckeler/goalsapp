@@ -7,7 +7,7 @@ const getData = require('../controllers/getData');
 const isAuthenticated = require('../controllers/isauthenticated')
 
 router.get('/',isAuthenticated,(req,res)=>{
-    res.render('index')
+    res.render('index.html')
 })
 
 router.get('/getData',getData)

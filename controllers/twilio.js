@@ -8,7 +8,8 @@ const taskUpdate = require('./twiliotasks/taskupdate')
 
 const twilio = (req, res) => {
     // const twiml = new MessagingResponse();
-
+    let from = req.body.From;
+    let user = from.substring(2)
     // parse request
     let s = req.body.Body;
     console.log(typeof s);
@@ -24,7 +25,7 @@ const twilio = (req, res) => {
     updatedStatus.shift();
     //find old status
     let status =[];
-    findGoal().then(arr=>{
+    findGoal(user).then(arr=>{
         console.log(arr)
         status = arr[0].status;
         //loop through status and replace
@@ -39,7 +40,9 @@ const twilio = (req, res) => {
         console.log(newStatus);
 
         //update status
-        const daygoal = new DayGoal(null,null,null,newStatus);
+        const daygoal = new DayGoal(null,null,null,newStatus,user);
+        console.log(daygoal)
+        console.log('daygoal was')
         daygoal.updateStatus().then(res=>{
             console.log(res)
         }).catch(err=>{
@@ -49,7 +52,7 @@ const twilio = (req, res) => {
         // twiml.message(`${newStatus}`);
         // res.writeHead(200, {'Content-Type': 'text/xml'});
         // res.end(twiml.toString());
-        taskUpdate()
+        taskUpdate(user)
     
     }).catch(err=>{
         console.log(err)

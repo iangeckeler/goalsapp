@@ -4,8 +4,8 @@ const connectDb = require('../database').db;
 const dbName = require('../database').dbName;
 
 const User  = class {
-    constructor (email,password) {
-        this.email = email;
+    constructor (phone,password) {
+        this.phone = phone;
         this.password = password;
     };
 
@@ -13,7 +13,7 @@ const User  = class {
         //remember, db is a database
         connectDb(client=>{
             let db = client.db(dbName);
-            let user = {email: this.email, password: this.password};
+            let user = {phone: this.phone, password: this.password};
             db.collection('users').insertOne(user).then(res=>{
                 console.log('1 user successfully inserted')
                 client.close();
@@ -27,7 +27,7 @@ const User  = class {
         return new Promise((resolve,reject)=>{
             connectDb(client=>{
                 let db = client.db(dbName);
-                db.collection('users').findOne({email: this.email}).then(res=>{
+                db.collection('users').findOne({phone: this.phone}).then(res=>{
                     if (res != null) {
                         resolve(true)
                     } else {
@@ -46,7 +46,7 @@ const User  = class {
         return new Promise((resolve,reject) => {
             connectDb(client =>{
                 let db = client.db(dbName);
-                db.collection('users').findOne({email:this.email}).then(res=>{
+                db.collection('users').findOne({phone:this.phone}).then(res=>{
                     if(res != null){
                         if(res.password==this.password){
                             resolve(true)

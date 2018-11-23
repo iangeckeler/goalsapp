@@ -3,22 +3,25 @@ const dbName = require('../database').dbName;
 const moment = require('moment')
 
 class DayGoal {
-    constructor(title,tasks,date,status) {
+    constructor(title,tasks,date,status,user) {
         this.title = title;
         this.tasks = tasks;
         this.date = date;
         this.status = status;
+        this.user = user;
     }
 
     updateStatus() {         
         //update new status
-        let myquery = {"date": {"$gte": new Date(moment().startOf('day'))}};
+        let myquery = {"date": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
         var newvalues = { $set: {status: this.status} };
         return new Promise((resolve,reject)=>{
             dbConnect((client)=>{
                 let db = client.db(dbName);
                 db.collection('daygoals').updateOne(myquery, newvalues).then(res=>{
                     client.close();
+                    console.log('res is')
+                    console.log(res)
                     resolve("1 document updated");
                 }).catch(err=>{
                     reject(err)
@@ -32,7 +35,7 @@ class DayGoal {
         return new Promise((resolve,reject)=>{
             dbConnect((client)=>{
                 let db = client.db(dbName);
-                let daygoal = {title: this.title, tasks: this.tasks,date:this.date,status:this.status};
+                let daygoal = {title: this.title, tasks: this.tasks,date:this.date,status:this.status,user:this.user};
                 db.collection('daygoals').insertOne(daygoal).then(res=>{
                     client.close();
                     resolve('1 daygoal successfully inserted')

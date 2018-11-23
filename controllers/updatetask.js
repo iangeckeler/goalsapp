@@ -31,9 +31,9 @@ let newStatus = status.map((x,index)=>{
 })
 
 //update status
-const daygoal = new DayGoal(null,null,null,status)
-daygoal.updateStatus().then(res=>{
-    console.log(res)
-}).catch(err=>{
-    console.log(err)
-})
+// const daygoal = new DayGoal(null,null,null,status)
+// daygoal.updateStatus().then(res=>{
+//     console.log(res)
+// }).catch(err=>{
+//     console.log(err)
+// })
