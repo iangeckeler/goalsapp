@@ -11,7 +11,7 @@ const twilio = (req, res) => {
 
     // parse request
     let s = req.body.Body;
-    console.log(typeof s)
+    console.log(typeof s);
     //return all objects that were sent in message for numbers 1-9
     let updatedStatus = [];
     for (let i=0;i<10;i++) {
@@ -26,7 +26,7 @@ const twilio = (req, res) => {
     let status =[];
     findGoal().then(arr=>{
         console.log(arr)
-        status = arr[0].status
+        status = arr[0].status;
         //loop through status and replace
         let newStatus = status.map((x,index)=>{
             if(x==0 && updatedStatus[index]==1) {
@@ -35,11 +35,11 @@ const twilio = (req, res) => {
                 return x
             }
         })
-        console.log('newStatus is')
-        console.log(newStatus)
+        console.log('newStatus is');
+        console.log(newStatus);
 
         //update status
-        const daygoal = new DayGoal(null,null,null,newStatus)
+        const daygoal = new DayGoal(null,null,null,newStatus);
         daygoal.updateStatus().then(res=>{
             console.log(res)
         }).catch(err=>{
@@ -54,8 +54,9 @@ const twilio = (req, res) => {
     }).catch(err=>{
         console.log(err)
     })
+}
 
-  }
+
 
   module.exports = {
       twilio: twilio
