@@ -14,10 +14,10 @@ app.use(function(req, res, next) {
 });
 
 
-app.set('views', __dirname + '/dist');
+app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/dist'))
+app.use(express.static(__dirname + '/views'))
 
 //servio NOTE change to 3000 for non ui changes
 //ssh -R 80:localhost:8080 serveo.net

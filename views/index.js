@@ -1,75 +1,41 @@
-const e = React.createElement
-const List = require('./components/list')
 const serveoHost = 'https://vilicus.serveo.net/' 
 const localHost = '/'
 const host = localHost;
 
+console.log('working')
+
 axios.get(host+'getData').then(res=>{
     console.log(res)
-})
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title:'',
-            temp: '',
-            items: []
-        };
+});
+
+let formButton = document.getElementById('form-button');
+console.log(formButton)
+formButton.onclick = () => {
+    event.preventDefault();
+    let stakeholderPhone = document.getElementById('stakeholderPhone').value;
+    let items=[];
+    for (let i=0;i<3;i++){
+        let taskNum = `task${i+1}`
+        console.log(taskNum)
+        let value = document.getElementById(taskNum).value
+        items.push(value);
     }
+    console.log(stakeholderPhone)
+    console.log(items)
+    const payload = {
+    title: stakeholderPhone,
+    body: items,
+    };
 
-    onClick ()  {
-        event.preventDefault();
-        this.setState((prevState)=>{
-            return {temp:'',items: [...prevState.items,this.state.temp]}
-        })
-    }
-
-    onChange(event) {
-        this.setState({temp: event.target.value})
-    }
-
-    save() {
-        event.preventDefault();
-        console.log(this.state.items)
-        console.log(this.state.title)
-        const payload = {
-        title: this.state.title,
-        body: this.state.items,
-        };
-
-        let url = host+'sendData';
-        axios({
-            url:url,
-            method:'post',
-            data:payload,
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }).then(res=>{
-        });
-    }
-
-    render() {
-        return e('div',null,[
-            e('form',{onSubmit:event=>{
-                event.preventDefault();
-            }},[
-                e('input',{placeholder:'Title',
-                onChange:(event)=> {
-                    this.setState({title:event.target.value})
-                }})
-            ]),
-            e('form',null,[
-                e(List,{items: this.state.items}),
-                e('input',{value:this.state.temp, onChange:this.onChange.bind(this)}),
-                e('button',{onClick:this.onClick.bind(this)},'Add New'),
-                e('button',{onClick:this.save.bind(this)},'Save')
-            ])
-        ])
-    }
-
+    let url = host+'sendData';
+    axios({
+        url:url,
+        method:'post',
+        data:payload,
+        headers:{
+            'Content-Type':'application/json'
+        }
+    }).then(res=>{
+        console.log(res)
+    });
 }
-
-
-
-ReactDOM.render(e(App),document.getElementById('fruit-list'))
