@@ -8,7 +8,10 @@
     "start": "node app.js",
     "updateUser": "node scripts/taskupdate.js",
     "build": "webpack --mode production",
-    "server": "webpack-dev-server --open --mode development"
+    "server": "webpack-dev-server --open --mode development",
+    "morningreminder": "node cron/morningreminder.js",
+    "taskupdate": "node cron/taskupdate.js",
+    "stakeholderreview": "node cron/stakeholderreview.js"
   },
   "author": "",
   "license": "ISC",
