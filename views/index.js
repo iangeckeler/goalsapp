@@ -1,6 +1,6 @@
 const serveoHost = appUrl;
 const localHost = '/'
-const host = serveoHost;
+const host = localHost;
 
 console.log('working')
 
