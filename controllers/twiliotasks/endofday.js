@@ -13,6 +13,7 @@ const endOfDay = ()=>{
     //construct task message
 
     findGoal().then(arr=>{
+        let stakeholder = arr[0].stakephone
         let tasks = arr[0].tasks;
         let status = arr[0].status;
         message = endOfDayMsg(tasks,status)

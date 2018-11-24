@@ -21,6 +21,8 @@ router.post('/',(req,res)=>{
             res.render('login.ejs', {message: 'No User exists'});
         } else {
             user.validate().then(validated=>{
+                console.log('vlaidation step')
+                console.log(validated)
                 if (validated) {
                     req.session.loggedIn = true;
                     req.session.user = user.phone;
@@ -43,7 +45,7 @@ router.get('/signup',(req,res)=>{
 });
 
 router.post('/signup',(req,res)=>{
-    let user = new User(req.body.phone,req.body.password1);
+    let user = new User(req.body.phone,req.body.password1,req.body.firstname);
     //check if user exists
     user.exists().then(exists=>{
         if (exists){

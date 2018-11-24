@@ -4,10 +4,12 @@ const router = express.Router();
 
 const sendData = require('../controllers/sendData')
 const getData = require('../controllers/getData');
-const isAuthenticated = require('../controllers/isauthenticated')
+const appUrl = require('../app')
 
-router.get('/',isAuthenticated,(req,res)=>{
-    res.render('index.html')
+
+console.log(appUrl)
+router.get('/',(req,res)=>{
+    res.render('index.ejs',{appUrl:'https://absque.serveo.net/'})
 })
 
 router.get('/getData',getData)

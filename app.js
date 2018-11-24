@@ -6,7 +6,8 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const bodyParser = require('body-parser');
 const mongoUrl = require('./database').dbUrl;
-
+const appUrl = "https://absque.serveo.net/";
+const isAuthenticated = require('./controllers/isauthenticated')
 
 app.options('*', cors()) // include before other routes
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,6 +35,7 @@ app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 //Was giving problems before with the login
+app.use(isAuthenticated)
 app.use(express.static(__dirname + '/views'))
 
 //servio NOTE change to 3000 for non ui changes
@@ -52,3 +54,5 @@ app.use(routes)
 http.createServer(app).listen(process.env.PORT || 3000, () => {
     console.log('Express server listening on port 3000');
   });
+
+  module.exports = appUrl;

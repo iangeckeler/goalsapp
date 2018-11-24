@@ -3,8 +3,8 @@ const dbName = require('../database').dbName;
 const moment = require('moment')
 
 class DayGoal {
-    constructor(title,tasks,date,status,user) {
-        this.title = title;
+    constructor(stakephone,tasks,date,status,user) {
+        this.stakephone = stakephone;
         this.tasks = tasks;
         this.date = date;
         this.status = status;
@@ -35,7 +35,7 @@ class DayGoal {
         return new Promise((resolve,reject)=>{
             dbConnect((client)=>{
                 let db = client.db(dbName);
-                let daygoal = {title: this.title, tasks: this.tasks,date:this.date,status:this.status,user:this.user};
+                let daygoal = {stakephone: this.stakephone, tasks: this.tasks,date:this.date,status:this.status,user:this.user};
                 db.collection('daygoals').insertOne(daygoal).then(res=>{
                     client.close();
                     resolve('1 daygoal successfully inserted')
@@ -44,6 +44,10 @@ class DayGoal {
                 })
             })
         })
+    }
+
+    getStakeholder() {
+        return this.stakephone
     }
 }
 

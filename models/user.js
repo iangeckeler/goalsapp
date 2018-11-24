@@ -4,7 +4,8 @@ const connectDb = require('../database').db;
 const dbName = require('../database').dbName;
 
 const User  = class {
-    constructor (phone,password) {
+    constructor (phone,password,name) {
+        this.name = name;
         this.phone = phone;
         this.password = password;
     };
@@ -13,7 +14,7 @@ const User  = class {
         //remember, db is a database
         connectDb(client=>{
             let db = client.db(dbName);
-            let user = {phone: this.phone, password: this.password};
+            let user = {phone: this.phone, password: this.password,name:this.name};
             db.collection('users').insertOne(user).then(res=>{
                 console.log('1 user successfully inserted')
                 client.close();

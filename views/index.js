@@ -1,6 +1,6 @@
-const serveoHost = 'https://vilicus.serveo.net/' 
+const serveoHost = appUrl;
 const localHost = '/'
-const host = localHost;
+const host = serveoHost;
 
 console.log('working')
 
@@ -23,7 +23,7 @@ formButton.onclick = () => {
     console.log(stakeholderPhone)
     console.log(items)
     const payload = {
-    title: stakeholderPhone,
+    stakephone: stakeholderPhone,
     body: items,
     };
 
