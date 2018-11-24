@@ -5,11 +5,15 @@ const stakeHolder = require('../../scripts/sendtwilio').stakeHolder
 const endOfDayMsg = require('../../scripts/endofdaymessage');
 const findGoal = require('../../scripts/findgoal')
 const findUser = require('../../scripts/finduser')
+const phones = require('../../routes/constants').phones;
 
 //twilio error codes
 //https://www.twilio.com/docs/iam/test-credentials#test-sms-messages
 
-const endOfDay = (user)=>{
+const endOfDay = (user,index)=>{
+    //phonepool number
+    let phoneIndex = index%phones.length;
+    
     //construct task message
 
     findGoal(user).then(arr=>{
@@ -24,8 +28,9 @@ const endOfDay = (user)=>{
             name = res[0].name;
             message = endOfDayMsg(tasks,status,name)
             //send the task list
-            sendTwilio(twilioPhone,userNum,message[0])
-            sendTwilio(twilioPhone,stakeholder,message[1])
+            sendTwilio(phones[phoneIndex],userNum,message[0])
+            //settimeout to space out the send
+            setTimeout(function(){ sendTwilio(phones[phoneIndex],userNum,message[0]) }, 1000);
         }).catch(err=>{
             console.log(err)
         })

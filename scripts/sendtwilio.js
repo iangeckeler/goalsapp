@@ -12,7 +12,10 @@ const sendTwilio= (from,to,body) => {
      from: from,
      to: to
    })
-  .then(message => console.log(message.sid))
+  .then(message => {
+    console.log(message.sid)
+    console.log('sent from '+from)
+  })
   .done();
 }
 

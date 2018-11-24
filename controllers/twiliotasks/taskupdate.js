@@ -3,11 +3,15 @@ const twilioPhone = require('../../scripts/sendtwilio').twilioPhone;
 const myPhone = require('../../scripts/sendtwilio').myPhone;
 const updateMsg = require('../../scripts/updatemessage')
 const findGoal = require('../../scripts/findgoal')
+const phones = require('../../routes/constants').phones;
 //set up the timeline (done in heroku) eventually switch to node-cron
 
 
 
-const taskUpdate = (from)=>{
+const taskUpdate = (from,index)=>{
+    //phonepool number
+    let phoneIndex = index%phones.length;
+    
     //construct task message
 
     findGoal(from).then(arr=>{
@@ -17,7 +21,7 @@ const taskUpdate = (from)=>{
         //send the task list
         number = '+1'+from
         console.log(number)
-        sendTwilio(twilioPhone,number,message)
+        sendTwilio(phones[phoneIndex],number,message)
     }).catch(err=>{
         console.log(err)
     })

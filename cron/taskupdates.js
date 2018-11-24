@@ -7,7 +7,7 @@ todaysGoals().then(arr=> {
     for (let i =0;i<arr.length;i++){
         let user = arr[i].user;
         //update all taskholders
-        taskUpdate(user)
+        taskUpdate(user,i)
     }
 })
 
