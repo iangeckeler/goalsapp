@@ -7,7 +7,7 @@ const findUser = (number)=>{
         connectDb((client)=>{
             let db = client.db(dbName);
             let collection = db.collection('users');
-            collection.find({"user":number}).toArray().then(arr => {
+            collection.find({"phone":number}).toArray().then(arr => {
                 resolve(arr)
         }).catch(err=>{
             reject(err)
