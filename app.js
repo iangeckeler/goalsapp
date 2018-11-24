@@ -6,7 +6,6 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const bodyParser = require('body-parser');
 const mongoUrl = require('./database').dbUrl;
-const appUrl = "https://absque.serveo.net/";
 const isAuthenticated = require('./controllers/isauthenticated')
 
 app.options('*', cors()) // include before other routes
@@ -55,4 +54,3 @@ http.createServer(app).listen(process.env.PORT || 3000, () => {
     console.log('Express server listening on port 3000');
   });
 
-  module.exports = appUrl;

@@ -37,5 +37,6 @@ formButton.onclick = () => {
         }
     }).then(res=>{
         console.log(res)
+        window.location.replace('/')
     });
 }

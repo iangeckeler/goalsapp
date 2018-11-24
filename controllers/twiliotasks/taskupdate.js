@@ -23,8 +23,6 @@ const taskUpdate = (from)=>{
     })
 }
 
-//taskUpdate();
-
 module.exports = taskUpdate;
 
 
