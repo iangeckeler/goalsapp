@@ -67,8 +67,6 @@ const twilio = (req, res) => {
     }).catch(err=>{
         console.log(err)
     })
-    } else {
-
     }
 
 
