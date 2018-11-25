@@ -13,6 +13,9 @@ const phones = require('../../routes/constants').phones;
 const endOfDay = (user,index)=>{
     //phonepool number
     let phoneIndex = index%phones.length;
+
+    return new Promise((resolve,reject)=>{
+
     
     //construct task message
 
@@ -30,14 +33,23 @@ const endOfDay = (user,index)=>{
             //send the task list
             sendTwilio(phones[phoneIndex],userNum,message[0])
             //settimeout to space out the send
-            setTimeout(function(){ sendTwilio(phones[phoneIndex],userNum,message[0]) }, 1000);
+            setTimeout(function(){ sendTwilio(phones[phoneIndex],stakeholder,message[0]).then(res=>{
+                resolve(res)
+            }).catch(err=>{
+                reject(err)
+            }) }, 1000);
+
+            
         }).catch(err=>{
             console.log(err)
         })
     }).catch(err=>{
         console.log(err)
     })
+    })
 }
+
+
 module.exports = endOfDay;
 
 

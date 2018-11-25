@@ -7,11 +7,13 @@ const taskUpdates = () =>{
         for (let i =0;i<arr.length;i++){
             let user = arr[i].user;
             //update all taskholders
-            taskUpdate(user,i)
+            taskUpdate(user,i).then(res=>{
+                return process.exit()
+            }).catch(err=>{
+                return process.exit()
+            })
         }
     })
-
-    return
 }
 
 taskUpdates()

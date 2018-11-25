@@ -12,7 +12,7 @@ const sendData = (req,res)=>{
         console.log(saved)
         res.send('Goal saved!')
             //update user
-        taskUpdate(user)
+        taskUpdate(user,1)
     })
 
 

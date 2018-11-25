@@ -2,6 +2,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 // Download the helper library from https://www.twilio.com/docs/node/install
 // Your Account Sid and Auth Token from twilio.com/console
 const findGoal = require('../scripts/findgoal');
+const findUsers = require('../scripts/findusers')
 const DayGoal = require('../models/daygoals');
 const taskUpdate = require('./twiliotasks/taskupdate')
 
@@ -10,7 +11,16 @@ const twilio = (req, res) => {
     // const twiml = new MessagingResponse();
     let from = req.body.From;
     let user = from.substring(2)
-    // parse request
+    const userList =[];
+    //add a check to make sure that the from person is a user
+    findUsers().then(arr=>{
+        for(let i=0;i<arr.length;i++){
+            userList.push(arr[i].phone);
+        }
+    })
+
+    if(userList.includes(user)){
+            // parse request
     let s = req.body.Body;
     console.log(typeof s);
     //return all objects that were sent in message for numbers 1-9
@@ -45,6 +55,7 @@ const twilio = (req, res) => {
         console.log('daygoal was')
         daygoal.updateStatus().then(res=>{
             console.log(res)
+            taskUpdate(user)
         }).catch(err=>{
             console.log(err)
         })
@@ -52,11 +63,15 @@ const twilio = (req, res) => {
         // twiml.message(`${newStatus}`);
         // res.writeHead(200, {'Content-Type': 'text/xml'});
         // res.end(twiml.toString());
-        taskUpdate(user)
     
     }).catch(err=>{
         console.log(err)
     })
+    } else {
+
+    }
+
+
 }
 
 

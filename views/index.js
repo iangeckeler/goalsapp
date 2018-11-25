@@ -4,9 +4,9 @@ const host = localHost;
 
 console.log('working')
 
-axios.get(host+'getData').then(res=>{
-    console.log(res)
-});
+// axios.get(host+'getData').then(res=>{
+//     console.log(res)
+// });
 
 let formButton = document.getElementById('form-button');
 console.log(formButton)
