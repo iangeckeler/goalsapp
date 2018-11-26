@@ -13,7 +13,6 @@ const endOfDayMsg = (tasks,status,name) => {
             message[0] = 'Way to knock at least one out! Try for more tomorrow ;)'
             message[1] = name+' completed at least one of their most important tasks today.'
         }
-        return message
     } else {
         if(undone==tasknum) {
             message[0] = "What happened? You didn't complete any of your priorities today... Back at 'em tomorrow!"
@@ -25,9 +24,18 @@ const endOfDayMsg = (tasks,status,name) => {
             message[0] = 'Way to knock at least one out! Try for more tomorrow ;)'
             message[1] = 'Your friend completed at least one of their most important tasks today.'
         }
-        return message
     }
-
+    for (let i=0;i<tasknum;i++) {
+        if(status[i]==0){
+            message.forEach((el)=>{
+                el += `\n${i+1}. ${tasks[i]}`
+            }) 
+        } else {
+            message.forEach((el)=>{
+                el += `\n${i+1}. Done`
+            }) 
+        }
+    }
 }
 
 module.exports = endOfDayMsg;
