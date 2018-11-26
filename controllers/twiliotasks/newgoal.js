@@ -53,8 +53,6 @@ const newGoal = (user,index)=>{
 
 }
 
-newGoal('7604207520',1)
-
 module.exports = newGoal;
 
 
