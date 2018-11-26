@@ -16,4 +16,7 @@ const findUsers = ()=>{
 })
 }
 
+// findUsers().then(arr=>{
+//     console.log(arr)
+// })
 module.exports = findUsers;
