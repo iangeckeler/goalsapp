@@ -18,7 +18,8 @@ const twilio = (req, res) => {
             userList.push(arr[i].phone);
         }
     })
-
+    console.log(userList)
+    console.log(from)
     if(userList.includes(user)){
             // parse request
     let s = req.body.Body;
