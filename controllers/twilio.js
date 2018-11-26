@@ -55,7 +55,7 @@ const twilio = (req, res) => {
         console.log('daygoal was')
         daygoal.updateStatus().then(res=>{
             console.log(res)
-            taskUpdate(user)
+            taskUpdate(user,1)
         }).catch(err=>{
             console.log(err)
         })

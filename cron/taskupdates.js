@@ -16,7 +16,7 @@ const taskUpdates = () =>{
     })
 }
 
-taskUpdates()
+taskUpdates();
 
 
 
