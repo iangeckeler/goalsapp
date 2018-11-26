@@ -11,7 +11,13 @@ const findGoal = (from)=>{
         connectDb((client)=>{
             let db = client.db(dbName);
             let collection = db.collection('daygoals');
-            collection.find({"date": {"$gte": new Date(moment().startOf('day'))}, "user":from}).toArray().then(arr => {
+            collection.find({"date": {"$gte": new Date(moment().startOf('week'))}, "user":from}).toArray().then(arr => {
+                //sort by date
+                arr.sort(function(a,b){
+                    // Turn your strings into dates, and then subtract them
+                    // to get a value that is either negative, positive, or zero.
+                    return new Date(b.date) - new Date(a.date);
+                  });
                 resolve(arr)
         }).catch(err=>{
             reject(err)
