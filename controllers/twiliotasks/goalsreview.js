@@ -11,7 +11,7 @@ const goalsReview = (to,index)=>{
     let phoneIndex = index%phones.length; 
     // argument recieved as a user
     let userPhone = '+1'+to;
-    const message = "Rise and shine! Don't Forget to check out your goals this morning: "+appUrl
+    const message = "Rise and shine! Don't Forget to check out your goals this morning!"
     sendTwilio(phones[phoneIndex],userPhone,message).then(res=>{
         resolve(res)
     }).catch(err=>{

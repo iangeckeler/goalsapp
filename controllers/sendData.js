@@ -2,6 +2,7 @@ const moment = require('moment')
 
 const DayGoal = require('../models/daygoals')
 const taskUpdate = require('../controllers/twiliotasks/taskupdate')
+const newGoal = require('../controllers/twiliotasks/newgoal');
 
 const sendData = (req,res)=>{
     let user = req.session.user;
@@ -12,7 +13,11 @@ const sendData = (req,res)=>{
         console.log(saved)
         res.send('Goal saved!')
             //update user
-        taskUpdate(user,1)
+        newGoal(user,1).then(e=>{
+            console.log(e)
+        }).catch(e=>{
+            console.log(e)
+        })
     })
 
 
