@@ -5,8 +5,8 @@ const moment = require('moment');
 
 //get updated task list based on today's date
 const findGoal = (from)=>{
-    console.log(from)
-    console.log(typeof from)
+    // console.log(from)
+    // console.log(typeof from)
     return new Promise((resolve,reject)=> {
         connectDb((client)=>{
             let db = client.db(dbName);
@@ -19,5 +19,9 @@ const findGoal = (from)=>{
     })
 })
 }
+
+// findGoal('7604207520').then(res=>{
+//     console.log(res)
+// })
 
 module.exports = findGoal;

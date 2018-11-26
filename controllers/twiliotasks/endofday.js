@@ -26,10 +26,11 @@ const endOfDay = (user,index)=>{
         let stakeholder = '+1'+arr[0].stakephone
         let tasks = arr[0].tasks;
         let status = arr[0].status;
-
+        // console.log(user)
         findUser(user).then(res=>{
             name = res[0].name;
             message = endOfDayMsg(tasks,status,name)
+            console.log(message)
             //send the task list
             sendTwilio(phones[phoneIndex],userNum,message[0])
             //settimeout to space out the send

@@ -27,15 +27,17 @@ const endOfDayMsg = (tasks,status,name) => {
     }
     for (let i=0;i<tasknum;i++) {
         if(status[i]==0){
-            message.forEach((el)=>{
-                el += `\n${i+1}. ${tasks[i]}`
-            }) 
+            for(let i=0;i<message.length;i++){
+                message[i] += `\n${i+1}. ${tasks[i]}`
+            }
         } else {
-            message.forEach((el)=>{
-                el += `\n${i+1}. Done`
-            }) 
+            for(let i=0;i<message.length;i++){
+                message[i] += `\n${i+1}. Done`
+            }
+                
         }
     }
+    return message
 }
 
 module.exports = endOfDayMsg;
