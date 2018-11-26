@@ -25,7 +25,7 @@ const newGoal = (user,index)=>{
                     message[0] += `\n${i+1}. ${tasks[i]}`
                     message[1] += `\n${i+1}. ${tasks[i]}`
                 }
-                message[0] += '/nType the number of a task to check it off the list!'
+                message[0] += '\nType the number of a task to check it off the list!'
 
                 //send first message
                 sendTwilio(twilioPhone,userNum,message[0]).then(res=>{
