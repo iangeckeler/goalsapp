@@ -12,10 +12,10 @@ class DayGoal {
         this.user = user;
     }
 
-    updateStatus() {   
+    updateStatus(user) {   
         return new Promise((resolve,reject)=>{
 
-            findGoal().then(arr=>{
+            findGoal(user).then(arr=>{
                 arr.sort(function(a,b){
                     // Turn your strings into dates, and then subtract them
                     // to get a value that is either negative, positive, or zero.
