@@ -13,35 +13,38 @@ class DayGoal {
         this.user = user;
     }
 
-    updateStatus(user) {   
+    updateStatus() {   
         return new Promise((resolve,reject)=>{
-
-            findGoal(user).then(arr=>{
+            findGoal(this.user).then(arr=>{
+                console.log(arr)
                 arr.sort(function(a,b){
                     // Turn your strings into dates, and then subtract them
                     // to get a value that is either negative, positive, or zero.
                     return new Date(b.date) - new Date(a.date);
                   });
                 let id = arr[0]._id
-    
-                
-            })      
-            //update new status
-            let myquery = {"_id": new ObjectId(id)};
-            //let myquery = {"_id": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
-            var newvalues = { $set: {status: this.status} };
+                // console.log(id)
 
-            dbConnect((client)=>{
-                let db = client.db(dbName);
-                db.collection('daygoals').updateOne(myquery, newvalues).then(res=>{
-                    client.close();
-                    console.log('res is')
-                    console.log(res)
-                    resolve("1 document updated");
-                }).catch(err=>{
-                    reject(err)
-                })
-                })
+                //update new status
+                let myquery = {"_id": new ObjectId(id)};
+                //let myquery = {"_id": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
+                var newvalues = { $set: {status: this.status} };
+
+                dbConnect((client)=>{
+                    let db = client.db(dbName);
+                    db.collection('daygoals').updateOne(myquery, newvalues).then(res=>{
+                        client.close();
+                        // console.log('res is')
+                        // console.log(res)
+                        resolve("1 document updated");
+                    }).catch(err=>{
+                        reject(err)
+                    })
+                    })
+            }).catch(err=>{
+                reject(err)
+            })      
+
             })
 
         }
@@ -66,9 +69,11 @@ class DayGoal {
     }
 }
 
-// let daygoal = new DayGoal('hello',['poop','pee','fart'])
-// daygoal.save().then(res=>{
-//     console.log(res)
+// let daygoal = new DayGoal(null,null,null,[0,0,0],'7604207520');
+// daygoal.updateStatus().then(res=>{
+//     console.log('worked')
+// }).catch(err=>{
+//     console.log('failed')
 // })
 
 module.exports = DayGoal;
