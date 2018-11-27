@@ -27,12 +27,12 @@ const endOfDayMsg = (tasks,status,name) => {
     }
     for (let i=0;i<tasknum;i++) {
         if(status[i]==0){
-            for(let i=0;i<message.length;i++){
-                message[i] += `\n${i+1}. ${tasks[i]}`
+            for(let j=0;j<message.length;j++){
+                message[j] += `\n${i+1}. ${tasks[i]}`
             }
         } else {
-            for(let i=0;i<message.length;i++){
-                message[i] += `\n${i+1}. Done`
+            for(let j=0;j<message.length;j++){
+                message[j] += `\n${i+1}. ${tasks[i]} (done)`
             }
                 
         }
