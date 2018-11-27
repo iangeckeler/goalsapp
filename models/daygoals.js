@@ -1,6 +1,7 @@
 const dbConnect = require('../database').db;
 const dbName = require('../database').dbName;
 const moment = require('moment')
+const findGoal = require('../scripts/findgoal');
 
 class DayGoal {
     constructor(stakephone,tasks,date,status,user) {
@@ -11,11 +12,24 @@ class DayGoal {
         this.user = user;
     }
 
-    updateStatus() {         
-        //update new status
-        let myquery = {"date": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
-        var newvalues = { $set: {status: this.status} };
+    updateStatus() {   
         return new Promise((resolve,reject)=>{
+
+            findGoal().then(arr=>{
+                arr.sort(function(a,b){
+                    // Turn your strings into dates, and then subtract them
+                    // to get a value that is either negative, positive, or zero.
+                    return new Date(b.date) - new Date(a.date);
+                  });
+                let id = arr[0]._id
+    
+                
+            })      
+            //update new status
+            let myquery = {"_id": new ObjectId(id)};
+            //let myquery = {"_id": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
+            var newvalues = { $set: {status: this.status} };
+
             dbConnect((client)=>{
                 let db = client.db(dbName);
                 db.collection('daygoals').updateOne(myquery, newvalues).then(res=>{
