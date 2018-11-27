@@ -26,7 +26,7 @@ class DayGoal {
                 
             })      
             //update new status
-            let myquery = {"_id": new ObjectId(id)};
+            let myquery = {"_id": ObjectId(id)};
             //let myquery = {"_id": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
             var newvalues = { $set: {status: this.status} };
 
