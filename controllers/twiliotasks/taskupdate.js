@@ -33,7 +33,12 @@ const taskUpdate = (from,index)=>{
     })
 }
 
-//taskUpdate()
+// taskUpdate().then(res=>{
+//     console.log(res)
+
+// }).catch(err=>{
+//     console.log(err)
+// })
 
 module.exports = taskUpdate;
 
