@@ -2,6 +2,7 @@ const dbConnect = require('../database').db;
 const dbName = require('../database').dbName;
 const moment = require('moment')
 const findGoal = require('../scripts/findgoal');
+ObjectId = require('mongodb').ObjectID;
 
 class DayGoal {
     constructor(stakephone,tasks,date,status,user) {
@@ -26,7 +27,7 @@ class DayGoal {
                 
             })      
             //update new status
-            let myquery = {"_id": ObjectId(id)};
+            let myquery = {"_id": new ObjectId(id)};
             //let myquery = {"_id": {"$gte": new Date(moment().startOf('day'))},"user":this.user};
             var newvalues = { $set: {status: this.status} };
 
