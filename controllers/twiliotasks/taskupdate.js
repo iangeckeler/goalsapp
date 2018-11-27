@@ -9,6 +9,7 @@ const phones = require('../../routes/constants').phones;
 
 
 const taskUpdate = (from,index)=>{
+    console.log('inside of taskupdate')
     //phonepool number
     let phoneIndex = index%phones.length;
     console.log(phones[phoneIndex])
@@ -16,6 +17,8 @@ const taskUpdate = (from,index)=>{
 
     return new Promise((resolve,reject)=>{
         findGoal(from).then(arr=>{
+            console.log('inside of findGoal')
+            console.log(arr)
             let tasks = arr[0].tasks;
             let status = arr[0].status;
             message = updateMsg(tasks,status)

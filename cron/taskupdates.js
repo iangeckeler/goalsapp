@@ -7,6 +7,7 @@ const taskUpdates = () =>{
         //get all daygoals
         todaysGoals().then(arr=> {
             console.log('todaygoals retrieved')
+            console.log(arr)
             //loop through the users
             for (let i =0;i<arr.length;i++){
                 let user = arr[i].user;
