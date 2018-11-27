@@ -26,9 +26,9 @@ const taskUpdate = (from,index)=>{
             number = '+1'+from
             console.log(number)
             sendTwilio(phones[phoneIndex],number,message).then(res=>{
-                resolve(res)
+                resolve('sendtwilio worked')
             }).catch(err=>{
-                reject(err)
+                reject('sendtwiliofailed')
             })
         }).catch(err=>{
             reject(err)

@@ -3,6 +3,9 @@ const taskUpdate = require('../controllers/twiliotasks/taskupdate')
 
 const taskUpdates = () =>{
     return new Promise((resolve,reject)=>{
+        let resolveCount =0;
+        let resultObj = [];
+        while (resolveCount)
         console.log('task update begun')
         //get all daygoals
         todaysGoals().then(arr=> {
@@ -13,13 +16,21 @@ const taskUpdates = () =>{
                 let user = arr[i].user;
                 //update all taskholders
                 taskUpdate(user,i).then(res=>{
-                    resolve(res)
+                    resolveCount +=1;
+                    resultObj.push(res);
+                    if (resolveCount==arr.length){
+                        resolve(resultObj)
+                    }
                 }).catch(err=>{
-                    reject(err)
+                    resolveCount +=1;
+                    resultObj.push(err);
+                    if (resolveCount==arr.length){
+                        resolve(resultObj)
+                    }
                 })
             }
         }).catch(err=>{
-            console.log(err);
+            console.log('todays goals failed');
             reject(err)
         })
     })
