@@ -15,7 +15,7 @@ const User  = class {
         //remember, db is a database
         connectDb(client=>{
             let db = client.db(dbName);
-            let user = {phone: this.phone, password: this.password,name:this.name};
+            let user = {phone: this.phone, password: this.password,name:this.name,phoneIndex: this.phoneIndex};
             db.collection('users').insertOne(user).then(res=>{
                 console.log('1 user successfully inserted')
                 client.close();
