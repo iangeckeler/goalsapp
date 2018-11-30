@@ -9,8 +9,8 @@ const updateMsg = require('../../scripts/updatemessage')
 
 
 const newGoal = (user,index)=>{
-    let phoneIndex = index%phones.length;
-    let twilioPhone = phones[phoneIndex];
+    // let phoneIndex = index%phones.length;
+    // let twilioPhone = phones[phoneIndex];
 
     return new Promise((resolve,reject)=>{
         findGoal(user).then(arr=>{

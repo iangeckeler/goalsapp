@@ -8,7 +8,7 @@ const findUser = require('../../scripts/finduser')
 const goalsReview = (to,index)=>{
     return new Promise((resolve,reject)=>{
             //phonepool number
-    let phoneIndex = index%phones.length; 
+    // let phoneIndex = index%phones.length; 
     // argument recieved as a user
     let userPhone = '+1'+to;
     

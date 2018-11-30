@@ -12,8 +12,8 @@ const phones = require('../../routes/constants').phones;
 const taskUpdate = (from,index)=>{
     console.log('inside of taskupdate')
     //phonepool number
-    let phoneIndex = index%phones.length;
-    console.log(phones[phoneIndex])
+    // let phoneIndex = index%phones.length;
+    // console.log(phones[phoneIndex])
     //construct task message
 
     return new Promise((resolve,reject)=>{
