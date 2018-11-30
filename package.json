@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.368.0",
     "body-parser": "^1.18.3",
     "connect-mongodb-session": "^2.0.5",
     "cors": "^2.8.5",
