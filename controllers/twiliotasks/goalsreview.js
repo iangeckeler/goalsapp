@@ -15,6 +15,7 @@ const goalsReview = (to,index)=>{
     //get user for their name
     findUser(to).then(arr=>{
         let name = arr[0].name;
+        let phoneIndex = arr[0].phoneIndex
         const message = "Rise and shine "+name+"! Get shit done today with thefocusapp! "+appUrl
         sendTwilio(phones[phoneIndex],userPhone,message).then(res=>{
             resolve(res)

@@ -20,6 +20,7 @@ const newGoal = (user,index)=>{
             let tasknum = tasks.length;
             findUser(user).then(person=>{
                 let name = person[0].name
+                let phoneIndex = person[0].phoneIndex
                 let message = newGoalMsg(name);
                 for (let i=0;i<tasknum;i++) {
                     message[0] += `\n${i+1}. ${tasks[i]}`
@@ -28,7 +29,7 @@ const newGoal = (user,index)=>{
                 message[0] += '\nType the number of a task to check it off the list!'
 
                 //send first message
-                sendTwilio(twilioPhone,userNum,message[0]).then(res=>{
+                sendTwilio(phones[phoneIndex],userNum,message[0]).then(res=>{
                     console.log(res)
                 }).catch(err=>{
                     console.log(err)

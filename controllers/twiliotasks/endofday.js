@@ -29,6 +29,7 @@ const endOfDay = (user,index)=>{
         // console.log(user)
         findUser(user).then(res=>{
             name = res[0].name;
+            let phoneIndex = res[0].phoneIndex
             message = endOfDayMsg(tasks,status,name)
             console.log(message)
             //send the task list
