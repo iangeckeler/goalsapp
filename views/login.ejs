@@ -1,14 +1,27 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/src/login.css">
     </head>
     <body>
         <% if(message!=''){ %>
             <h1><%=message%></h1>
         <%}%>
-        <form class="form" method='POST' action='/login/'>
-            <input type="string" placeholder="phone" name='phone'>
-            <input type="password" placeholder="Password" name='password'>
-            <button type="submit" id="login-button">Login</button>
-        </form>
+        <div class="login-page">
+            <div class="form">
+                <b><h1>The Focus App</h1></b>
+                <form class="register-form" method='POST' action='/login/'>
+                <input type="string" placeholder="phone" name='phone'>
+                <input type="password" placeholder="Password" name='password'>
+                <button type='submit' id='login-button'>Login</button>
+                <p class="message">Not registered? <a href="/login/signup/">Sign Up</a></p>
+              </form>
+              <form class="login-form">
+                <input type="text" placeholder="username"/>
+                <input type="password" placeholder="password"/>
+                <button>login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+              </form>
+            </div>
+          </div>
     </body>
 </html>
