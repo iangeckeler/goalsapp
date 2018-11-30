@@ -1,19 +1,21 @@
 <html>
     <head>
+        <link rel='stylesheet' href='/src/login.css'>
     </head>
     <body>
         <script>
         let appUrl = <%-JSON.stringify(appUrl)%>
         </script>
-        <form action=""">
-            <p>Stakeholder Phone format: (7604907520)</p>
-            <input type="" id='stakeholderPhone'>
+        <form class='form' action=""">
+            <h1>The Focus App</h1>
+            <p>Enter the phone number of someone to keep you accountable, format: (7604907520)</p>
+            <input type="" placeholder="7604907520" id='stakeholderPhone'>
             <p>Task 1</p>
-            <input type="text" id='task1'>
+            <input type="text" placeholder="Walk the dog" id='task1'>
             <p>Task 2</p>
-            <input type="text" id='task2'>
+            <input type="text" placeholder="Pay the bills" id='task2'>
             <p>Task 3</p>
-            <input type="text" id='task3'>
+            <input type="text" placeholder="Fix the economy" id='task3'>
             <button type='submit' id='form-button'>Send</button>
         </form>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
