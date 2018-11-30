@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const usersFull = require('./constants')
-const phones = require('./constants')
+const phones = require('./constants').phones
 const findUsers = require('../scripts/findusers');
 ///stuff for the database
 const User = require('../models/user')
@@ -48,6 +48,8 @@ router.get('/signup',(req,res)=>{
 
 router.post('/signup',(req,res)=>{
     findUsers().then(arr=>{
+        console.log('userslength'+arr.length)
+        console.log('phonelength'+phones.length)
         if (arr.length>=phones.length) {
             res.render('signup.ejs', {message: "Sorry, we've reached full capacity, please contact Ian at ikcgeckeler@gmail.com to request a signup."});
         } else{

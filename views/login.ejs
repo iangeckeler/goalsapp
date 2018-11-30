@@ -9,7 +9,7 @@
             <input type="password" placeholder="Password" name='password'>
             <button type="submit" id="login-button">Login</button>
             <% if(message!=''){ %>
-                <h1><%=message%></h1>
+                <p class='message'><%=message%></p>
             <%} else {%>
                 <p class="message">Not registered? <a href="/login/signup">Create an account</a></p>
             <%}%>
