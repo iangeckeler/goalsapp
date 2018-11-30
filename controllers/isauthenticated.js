@@ -1,5 +1,5 @@
 const isAuthenticated = (req,res,next) => {
-    //console.log(req.originalUrl)
+    console.log(req.originalUrl)
     //console.log(req.session)
     let s1=req.originalUrl;
     if (s1.includes('login') || req.originalUrl=='/login/' || req.originalUrl == '/login/signup'||req.originalUrl == '/sms') {
