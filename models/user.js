@@ -4,10 +4,11 @@ const connectDb = require('../database').db;
 const dbName = require('../database').dbName;
 
 const User  = class {
-    constructor (phone,password,name) {
+    constructor (phone,password,name,phoneIndex) {
         this.name = name;
         this.phone = phone;
         this.password = password;
+        this.phoneIndex = phoneIndex;
     };
 
     save() {
