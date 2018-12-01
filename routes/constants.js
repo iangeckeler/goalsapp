@@ -1,10 +1,11 @@
 let serveoUrl = "https://tedium.serveo.net";
 let herokuUrl = "https://thefocusapp.herokuapp.com";
 
-// const accountSid = 'ACd3153105e04575233d9ed18e4899323a';
-const accountSid2 = 'AC307f83011f4e85c3b80560128a3ada18'
-// const authToken = 'ee64bf998e59b27fc07e9a7c1c4d4544';
-const authToken2 = 'd51c1d548802903df37dd15b32f2d882'
+let accountSid = require('../processvars').accountSid;
+let authToken = require('../processvars').authToken;
+
+//when developing locally -use this
+// const mongoUrl = require('./processvars').mongoUrl;
 
 const appUrl = herokuUrl;
 
@@ -12,13 +13,14 @@ const appUrl = herokuUrl;
 const aws = require('aws-sdk');
 let s3 = new aws.S3({
   processSid: process.env.accountSid,
-  processToken: process.env.authToken
+  processToken: process.env.authToken,
+  mongoUrl: process.env.mongoUrl
 });
 
+//define process variables
 let Sid = s3.config.processSid;
 let token = s3.config.processToken;
-console.log(Sid)
-console.log(token)
+let mongoUrl = s3.config.mongoUrl;
 
 //const phones = ['+19705488971','+18606064203'];
 //old phone '+14422640754 '
@@ -29,7 +31,7 @@ module.exports = {
     phones:phones,
     usersFull:usersFull,
     accountSid: accountSid2,
-    authToken: authToken2
-
+    authToken: authToken2,
+    mongoUrl:mongoUrl
 }
 
