@@ -23,7 +23,7 @@ let mongoUrl = s3.config.mongoUrl;
 
 //const phones = ['+19705488971','+18606064203'];
 //old phone '+14422640754 '
-const phones = ['+19705332106']
+const phones = ['+19705332106','+19705074426']
 const usersFull = true;
 module.exports = {
     appUrl:appUrl,
