@@ -1,6 +1,6 @@
 const accountSid = require('../routes/constants').accountSid
 const authToken = require('../routes/constants').authToken
-//account2
+//account
 const client = require('twilio')(accountSid, authToken);
 const twilioPhone = '+14422640754 '
 const myPhone = '+17604207520'
