@@ -21,6 +21,7 @@ let s3 = new aws.S3({
 let Sid = s3.config.processSid;
 let token = s3.config.processToken;
 let mongoUrl = s3.config.mongoUrl;
+console.log(mongoUrl)
 
 //const phones = ['+19705488971','+18606064203'];
 //old phone '+14422640754 '
