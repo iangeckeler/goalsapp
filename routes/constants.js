@@ -15,8 +15,8 @@ let s3 = new aws.S3({
   processToken: process.env.authToken
 });
 
-let Sid = s3.config.accountSid;
-let token = s3.config.authToken;
+let Sid = s3.config.processSid;
+let token = s3.config.processToken;
 console.log(Sid)
 console.log(token)
 
