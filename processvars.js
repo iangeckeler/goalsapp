@@ -1,7 +1,6 @@
 //moody
-const dbName = 'goalsapp'
 const user = 'geckeler'
-const pass = 'yyhkrspRNaEW7rx';
+const pass = 'uPLKR8SmN5KULvj';
 // for mlab
 const mongoUrl = 'mongodb://'+user+':'+pass+'@ds115154.mlab.com:15154/goalsapp';
 

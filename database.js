@@ -2,6 +2,8 @@
 const mongodb = require('mongodb')
 const MongoClient =mongodb.MongoClient;
 
+const dbName = 'goalsapp'
+
 // for mlab
 const mongoUrl = require('./routes/constants').mongoUrl;
 //local doesn't work with sessions?

@@ -35,4 +35,3 @@ module.exports = {
     authToken: token,
     mongoUrl:mongoUrl
 }
-
