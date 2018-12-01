@@ -31,8 +31,8 @@ module.exports = {
     appUrl:appUrl,
     phones:phones,
     usersFull:usersFull,
-    accountSid: accountSid2,
-    authToken: authToken2,
+    accountSid: Sid,
+    authToken: token,
     mongoUrl:mongoUrl
 }
 
