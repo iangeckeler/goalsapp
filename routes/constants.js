@@ -14,6 +14,8 @@ let s3 = new aws.S3({
   processSid: process.env.accountSid,
   processToken: process.env.authToken
 });
+
+console.log(s3)
 //const phones = ['+19705488971','+18606064203'];
 //old phone '+14422640754 '
 const phones = ['+19705332106']
